@@ -10,7 +10,7 @@ from sklearn.metrics import mean_squared_error, r2_score
 # Load the bike dataset
 bike_X = []
 bike_Y = []
-with open('day.csv') as csvDataFile:
+with open('../dataset/day.csv') as csvDataFile:
     next(csvDataFile)
     csvReader = csv.reader(csvDataFile)
     for row in csvReader:
