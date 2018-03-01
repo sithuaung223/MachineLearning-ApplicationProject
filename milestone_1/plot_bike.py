@@ -56,15 +56,15 @@ for train, test in kf.split(bike_X_train):
     sum_MSE += mean_squared_error(Y_CVtest, Y_CVpred)
 
 avg = sum_MSE/10.00
-print("Avearge Mean squared error: %2.f" % avg)
+print("Average MSE of 10-fold-CV: %2.f" % avg)
 
 # Make predictions using the testing set
 bike_Y_pred = regr.predict(bike_X_test)
 
 # The coefficients
-print('Coefficients: \n', regr.coef_)
+#print('Coefficients: \n', regr.coef_)
 # The mean squared error
-print("Mean squared error: %.2f"
+print("Mean squared error of test data: %.2f"
       % mean_squared_error(bike_Y_test, bike_Y_pred))
 # Explained variance score: 1 is perfect prediction
 print('Variance score: %.2f' % r2_score(bike_Y_test, bike_Y_pred))

@@ -1,26 +1,43 @@
 Milestone 1
 ===========
 
-Folders
+Code and Library
 -------
+plot_bike.py
+Our team used 
+-sklearn library for linear regression and 10 fold cross validation to built the linear model and error measure
+-matplotlib to plot the result of model.
+-numpy to set up the data set.
+-anaconda and ipython for GUI plot in window10
 
-Each milestone folder should include the following
+Description
+------------
 
-* All code you wrote/used
-* A README file
+Our team chose the Bike Sharing data from UCI Machine Learning Repository as our dataset to use in application project. Bike-sharing system is a world wide growing program with 500,000 bicycle and also played an important role in traffic, environmental and health issue. Therefore, those data are useful for research that are related to sensing mobility in city. Also, it is expected that the most important event in city could be detected or predicted via monitoring these data.
+Our goal is to build a linear model to predict the number of bike shared per day according to weather condition.
 
-They should not include
+Method
+--------
+We used linear regression to train the data and build the model. Crossvalidation method to validate how well our model predict the data. Frist we divided the data into 80% traning data and 20% test data. Then we used 10 fold Crossvalidation method to split and train the Training data with linear regression model. We used mean-squared-error to measure our model prediction. After we trained with training data set, we used our linear model on test data and compare with the actual result and plot the those on test data.
 
-* Datasets
-* Large packages
+Resources
+------------
+Anaconda
+Ipython
+Scikit learn lib
+Numpy
+matplotlib
 
-README
-------
+Running the code
+----------------
+Since we try to plot our data, we will need "anaconda" and "ipython" to plot the data for GUI plotting tool.
+Then go to anaconda command line window, go to location of the file "plot_bike"
+type : ipython
+>>> run plot_bike.py
 
-The README file should include
-
-* Description of what your team did
-* Methods used to accomplish each part
-* Potential difficulties faced
-* Resources used
-* Description of how to run the code in the folder
+Outputs 
+----------
+Average MSE of 10-fold-CV:
+MSE of test data:
+Variance score:
+Plot
