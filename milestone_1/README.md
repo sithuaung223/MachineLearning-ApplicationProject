@@ -22,11 +22,15 @@ We used linear regression to train the data and build the model. Crossvalidation
 
 Resources
 ------------
-Anaconda
-Ipython
-Scikit learn lib
-Numpy
+Anaconda,
+Ipython,
+Scikit learn lib,
+Numpy,
 matplotlib
+
+Result
+------------
+Our average mean-squared-error is quite high in numerical value and high variance. That means our model is underfit. It should be underfit because we are using the 5 types of weather features such as weather situation, temperature, feeling temperature, humidity, and windspeed. If we get more environmental condition feature, it might increase our model. For high variance, we can reslove the issue by training the model with more data. If we used hourly dataset which has more data, the prediciton seems less variance than daily dataset. 
 
 Running the code
 ----------------
