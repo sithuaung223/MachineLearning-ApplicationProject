@@ -37,14 +37,14 @@ for train, test in kf.split(bike_X):
     Y_CVtrain, Y_CVtest = bike_Y[train] , bike_Y[test]
 
     # Train the model using the training sets
-    regr.fit(X_CVtrain[:,-5:], Y_CVtrain)
+    regr.fit(X_CVtrain, Y_CVtrain)
 
     # Make predictions using the testing set
-    Y_CVpred = regr.predict(X_CVtest[:,-5:])
+    Y_CVpred = regr.predict(X_CVtest)
     
-    sum_MSE += mean_squared_error(Y_CVtest, Y_CVpred)
+    sum_MSE += mean_squared_error(Y_CVtest[:,2], Y_CVpred[:,2])
 
-    sum_variance += r2_score(Y_CVtest, Y_CVpred)
+    sum_variance += r2_score(Y_CVtest[:,2], Y_CVpred[:,2])
 
 
     # Plot outputs
@@ -60,4 +60,4 @@ avg_MSE = sum_MSE/10.00
 print("Average MSE of 10-fold-CV: %2.4f" % avg_MSE)
 
 avg_variance = sum_variance/10.00
-print("Average variance of 10-fold-CV: %2.4f" % avg_variance)
+print("Average variance score of 10-fold-CV: %2.4f" % avg_variance)
