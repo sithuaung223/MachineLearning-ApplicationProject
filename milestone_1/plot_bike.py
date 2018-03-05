@@ -23,29 +23,18 @@ with open('../dataset/day.csv') as csvDataFile:
 
 bike_X = np.array(bike_X)
 bike_Y = np.array(bike_Y)
-# 80% train data and 20% test data 
-test_dataSize = int(len(bike_X) * 0.2)
-
-# Split the data into training/testing sets
-bike_X_train = bike_X[:-test_dataSize]
-bike_X_test = bike_X[-test_dataSize:]
-
-
-# Split the targets into training/testing sets
-bike_Y_train = bike_Y[:-test_dataSize]
-bike_Y_test = bike_Y[-test_dataSize:]
-
 # Create linear regression object
 regr = linear_model.LinearRegression()
 
-sum_MSE = 0
+sum_MSE = 0.00
+sum_variance = 0.00
 kf = KFold(n_splits = 10, shuffle = True, random_state=0)
-for train, test in kf.split(bike_X_train):
+for train, test in kf.split(bike_X):
     # Split the data into training/testing sets
-    X_CVtrain, X_CVtest = bike_X_train[train] , bike_X_train[test]
+    X_CVtrain, X_CVtest = bike_X[train] , bike_X[test]
 
     # Split the targets into training/testing sets
-    Y_CVtrain, Y_CVtest = bike_Y_train[train] , bike_Y_train[test]
+    Y_CVtrain, Y_CVtest = bike_Y[train] , bike_Y[test]
 
     # Train the model using the training sets
     regr.fit(X_CVtrain, Y_CVtrain)
@@ -53,27 +42,22 @@ for train, test in kf.split(bike_X_train):
     # Make predictions using the testing set
     Y_CVpred = regr.predict(X_CVtest)
     
-    sum_MSE += mean_squared_error(Y_CVtest, Y_CVpred)
+    sum_MSE += mean_squared_error(Y_CVtest[:,2], Y_CVpred[:,2])
 
-avg = sum_MSE/10.00
-print("Average MSE of 10-fold-CV: %2.f" % avg)
+    sum_variance += r2_score(Y_CVtest[:,2], Y_CVpred[:,2])
 
-# Make predictions using the testing set
-bike_Y_pred = regr.predict(bike_X_test)
 
-# The coefficients
-#print('Coefficients: \n', regr.coef_)
-# The mean squared error
-print("Mean squared error of test data: %.2f"
-      % mean_squared_error(bike_Y_test, bike_Y_pred))
-# Explained variance score: 1 is perfect prediction
-print('Variance score: %.2f' % r2_score(bike_Y_test, bike_Y_pred))
+    # Plot outputs
+    plt.scatter(X_CVtest[:,0], Y_CVtest[:,2],  color='black')
+    plt.plot(X_CVtest[:,0], Y_CVpred[:,2], color='blue', linewidth=3)
 
-# Plot outputs
-plt.scatter(bike_X_test[:,0], bike_Y_test[:,2],  color='black')
-plt.plot(bike_X_test[:,0], bike_Y_pred[:,2], color='blue', linewidth=3)
+    plt.xticks(())
+    plt.yticks(())
 
-plt.xticks(())
-plt.yticks(())
+    plt.show()
 
-plt.show()
+avg_MSE = sum_MSE/10.00
+print("Average MSE of 10-fold-CV: %2.4f" % avg_MSE)
+
+avg_variance = sum_variance/10.00
+print("Average variance score of 10-fold-CV: %2.4f" % avg_variance)
