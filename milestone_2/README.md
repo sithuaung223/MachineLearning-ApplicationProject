@@ -24,15 +24,13 @@ GMPL
 
 Result
 ------------
-Using squared exponential kernel:
-Negative log marginal likelihood:
+Using squared exponential kernel, we got the negative log marginal likelihood is 5925.551
 
 ![alt text](https://raw.githubusercontent.com/sithuaung223/MachineLearning-ApplicationProject/master/milestone_2/SquaredExponentialKernel.jpg)
 
 
 
-Using Matern 3/2 kernel
-Negative log marginal likelihood
+Using Matern 3/2 kernel, we got the negative log marginal likelihood is 5947.724
 ![alt text](https://raw.githubusercontent.com/sithuaung223/MachineLearning-ApplicationProject/master/milestone_2/Matern32.jpg)
 
 
