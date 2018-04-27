@@ -1,4 +1,4 @@
-Milestone 2
+Milestone 3
 ===========
 
 Code and Library
@@ -36,9 +36,11 @@ Apply PCA:
 
 
 Visualize the data:
+
 ![alt text](https://raw.githubusercontent.com/sithuaung223/MachineLearning-ApplicationProject/master/milestone_3/scatterredblue.jpg)
 
 Linear Regression
+
 1. For the orginal data <br/>
 ![alt text](https://raw.githubusercontent.com/sithuaung223/MachineLearning-ApplicationProject/master/milestone_3/lm1.PNG)
 
